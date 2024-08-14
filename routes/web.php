@@ -3,10 +3,17 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(App\Http\Middleware\EnsureTokenIsValid::class);
+// Route::get('/', function () {
+//     return view('welcome');
+// })->middleware(App\Http\Middleware\EnsureTokenIsValid::class);
 
+Route::get('/', function () {
+        return view('welcome');
+    })->middleware('is_admin');
+
+Route::get('/user-page', function () {
+        return view('user-page');
+    })->middleware('is_admin');
 // Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
 Route::controller(PostController::class)
