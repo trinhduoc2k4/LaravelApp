@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,5 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::apiResource('products', ProductController::class);
 
 });
+
+Route::get('/user-data/{user_id}', [ApiController::class, 'getId']);
